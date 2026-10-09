@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://4xaoukq2r4oo"]
+
+[ext_resource type="Texture2D" uid="uid://obnhaxnd5pu7" path="res://assets/sprites/orc/Craftpix_Orc/Orc_Warrior/Idle.png" id="1_t5ox4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq4lv"]
+atlas = ExtResource("1_t5ox4")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgbcn"]
+atlas = ExtResource("1_t5ox4")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf8l5"]
+atlas = ExtResource("1_t5ox4")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i1wr"]
+atlas = ExtResource("1_t5ox4")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11f6j"]
+atlas = ExtResource("1_t5ox4")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iutbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq4lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgbcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf8l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i1wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11f6j")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5ox4"]
+size = Vector2(12.09424, 29.895287)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2127916332]
+scale = Vector2(0.755, 0.755)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1840520092]
+scale = Vector2(0.545, 0.545)
+sprite_frames = SubResource("SpriteFrames_iutbn")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.020049207
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=390952881]
+position = Vector2(-1.2827225, 10.183246)
+shape = SubResource("RectangleShape2D_t5ox4")

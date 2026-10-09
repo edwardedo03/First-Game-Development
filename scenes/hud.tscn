@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://dco8t2y5c46aq"]
+
+[ext_resource type="Script" uid="uid://bp00of3y3hr8m" path="res://scripts/hud.gd" id="1_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://w2b0lugi2ja3" path="res://assets/hud/menu/Demo Pack/Button_Rectangle Button UnHighlighted.png" id="2_047uy"]
+[ext_resource type="Texture2D" uid="uid://xjh1wvrh5c24" path="res://assets/hud/menu/Demo Pack/Button_Rectangle Button Highlighted.png" id="3_5pdws"]
+[ext_resource type="Texture2D" uid="uid://s8wmmo8ot1tf" path="res://assets/hud/health/Health&Stamina/Red/Border.png" id="3_047uy"]
+[ext_resource type="Texture2D" uid="uid://bafuhe2d1qwtx" path="res://assets/hud/health/Health&Stamina/Red/Colors.png" id="4_5pdws"]
+[ext_resource type="Texture2D" uid="uid://bur3xg5w8ynib" path="res://assets/hud/menu/Demo Pack/Icon_Pause.png" id="4_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://bgpgxpljltrry" path="res://assets/hud/health/Health&Stamina/Red/BorderBG.png" id="5_0i1j5"]
+[ext_resource type="Texture2D" uid="uid://dsnarxmcxa5tn" path="res://assets/hud/menu/Demo Pack/Button_Square Button UnHighlighted.png" id="6_hd3ao"]
+[ext_resource type="Texture2D" uid="uid://468wssd0xg0m" path="res://assets/hud/menu/Demo Pack/Button_Square Button Highlighted.png" id="7_0i1j5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uo2fv"]
+texture = ExtResource("2_047uy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pdws"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_047uy"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hd3ao"]
+texture = ExtResource("2_047uy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mphia"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0i1j5"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0m4u7"]
+texture = ExtResource("2_047uy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apjy4"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5n1hp"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys2d1"]
+atlas = ExtResource("3_047uy")
+region = Rect2(94.08754, 112.9877, 53.376587, 15.67514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4thqg"]
+atlas = ExtResource("5_0i1j5")
+region = Rect2(78.301025, -2.4467535, 69.421646, 35.61206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jl2e"]
+atlas = ExtResource("4_5pdws")
+region = Rect2(94.041534, 112.976845, 53.533386, 15.228844)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iutbn"]
+atlas = ExtResource("3_047uy")
+region = Rect2(96.08714, 230.9397, 48.133255, 6.4773407)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcn5p"]
+atlas = ExtResource("4_5pdws")
+region = Rect2(96.02599, 230.94936, 48.36309, 6.276123)
+
+[node name="HUD" type="CanvasLayer" unique_id=1007076508]
+script = ExtResource("1_6fi6k")
+
+[node name="Menu" type="Control" parent="." unique_id=601171019]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu" unique_id=2016330208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2627451)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1278865556]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -94.0
+offset_right = 100.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="Menu/VBoxContainer" unique_id=1137324281]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_uo2fv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5pdws")
+theme_override_styles/hover = SubResource("StyleBoxTexture_047uy")
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Menu/VBoxContainer" unique_id=2034222204]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_hd3ao")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mphia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0i1j5")
+text = "Restart"
+
+[node name="Quit" type="Button" parent="Menu/VBoxContainer" unique_id=215913807]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_0m4u7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_apjy4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5n1hp")
+text = "Quit"
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1020629838]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(3.42, 1)
+value = 70.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_ys2d1")
+texture_over = SubResource("AtlasTexture_4thqg")
+texture_progress = SubResource("AtlasTexture_2jl2e")
+
+[node name="PauseButton" type="TextureButton" parent="." unique_id=900612747]
+process_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_top = 11.0
+offset_right = 702.0
+offset_bottom = 767.0
+grow_horizontal = 0
+scale = Vector2(0.055, 0.055)
+texture_normal = ExtResource("6_hd3ao")
+texture_pressed = ExtResource("7_0i1j5")
+texture_hover = ExtResource("7_0i1j5")
+
+[node name="PauseIcon" type="TextureRect" parent="PauseButton" unique_id=1586262350]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.455, 0.455)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_6fi6k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StaminaBar" type="TextureProgressBar" parent="." unique_id=118431157]
+offset_left = 38.42
+offset_top = 49.28
+offset_right = 78.42001
+offset_bottom = 89.27983
+scale = Vector2(3.42, 0.245)
+value = 70.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_iutbn")
+texture_progress = SubResource("AtlasTexture_bcn5p")
+
+[connection signal="pressed" from="Menu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

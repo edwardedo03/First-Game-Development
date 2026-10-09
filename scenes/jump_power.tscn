@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://clv4rancmkwgs"]
+
+[ext_resource type="Texture2D" uid="uid://dgbak25x744w8" path="res://assets/item/1/PNG/Separately/Icon13_1.png" id="1_3grja"]
+[ext_resource type="Script" uid="uid://dmbn2j78uwgbt" path="res://scripts/jump_power.gd" id="1_i7j6i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcn5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3grja")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iutbn"]
+radius = 9.0
+
+[node name="Double Jump" type="Area2D" unique_id=829504432]
+script = ExtResource("1_i7j6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1672413905]
+position = Vector2(0, -1)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_bcn5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1716192502]
+shape = SubResource("CircleShape2D_iutbn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

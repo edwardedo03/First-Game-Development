@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+export_credentials.cfg
+export_presets.cfg
+
+.mono/
+data_*/
+mono_crash.*.json

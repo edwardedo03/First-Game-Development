@@ -1,0 +1,21 @@
+# RDBI Hudoria Demo Asset Pack Licence
+
+Copyright © 2026 RDBI.
+
+You may:
+
+* Use these assets in personal projects ONLY.
+* Edit, recolour, resize and animate them.
+* Use them with credit of "RDBI".
+
+You may not:
+
+* Resell, share or redistribute the original assets.
+* Use this demo pack in commercial prodcuts
+* Redistribute edited or converted versions as an asset pack.
+* Use the assets to create or sell NFTs.
+
+The colour palette and font are third-party resources and remain subject to their own terms:
+
+* Glomzy 05 palette: https://lospec.com/palette-list/glomzy-05
+* League Spartan font: https://www.fontsquirrel.com/fonts/league-spartan

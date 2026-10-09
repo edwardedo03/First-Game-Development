@@ -1,0 +1,130 @@
+
+Hello there! 
+
+thanks for downloading, i hope this pack will be useful for your work; let me 
+know if that's the case and if you want to suggest quality of life improvements
+that may be useful to make this pack better. 
+
+Now some informations and warnings that may be useful for the use of the assets:
+
+
+
+------------------------------------------------------------------------------
+
+Measurements for creating grid and tile palettes in pxs:
+ 
+ - single square tile (SQ): 360 X 360 
+ - single column: 18 SQ / 1080 X 2160
+ - single row of baground columns with wall: 90 SQ / 4680 X 2160
+ - single wall background for internal columns: 12 SQ / 1080 X 1440
+                       +
+             single internal column
+
+------------------------------------------------------------------------------
+
+When you insert all of the tiles for the terrain tilemap in your engine, know 
+that bleeding may occur. i tried to make them as precise as i could and tried
+to prevent that, but unfortunately it looks there's a limit to what i can do. 
+one way to solve it is to enlarge the borders of the single tiles with this 
+issue of one, two or more rows of pixel of color, so that the grid should 
+always fine something to show instead of empty pixels; that said there are a lot
+of variations of this problem and so are the solutions, so you'll have to find 
+your for yourself. 
+If you actually know something more i could've done to prevent this, please tell
+me in the comments.
+
+------------------------------------------------------------------------------
+
+For the terrain tilemap and assets:
+
+It should be pretty complete, with a piece or a combination of them for a lot 
+of situations and compositions, but there's the possibility that you're specific
+need may not be covered. The best way to understand id that's the case is to try
+out different combinations yourself and see what sticks. 
+
+The terrain tiles are mainly divided in two categories for combination, those 
+being half tiles, meaning that their heaight is half a SQ, and the full tiles, 
+meaning that their height is a full SQ. Clearly, halfs do not connect with fulls, 
+but there are a lot of connectors for different situations that lets you jump 
+from one to the other; there are also some that do not, like some of the slides
+just go from half to half and full to full, so look carefully what is what while
+composing. 
+
+One tile may not solve everything and you could need to combine various others 
+for some particular needs. For exemple, if you want to create long stairs, using 
+only the single stair tile won't probably be enough; you'll need to combine it 
+with some wall tiles and floor tile for when you reach the half tile height. 
+
+------------------------------------------------------------------------------
+
+For the background tiles:
+
+You're free to use them how you see fit or not use them at all. 
+
+I made the base empty columns so that you can use a singular SQ of the pillar 
+and modify the height of the columns however you want just by repeating it. 
+
+I made them with the intent of creating a multilayered backgrounds that would
+have a parallax movement, so creating a depth perception.
+
+The darker columns, with already a a wall composed in them, were made to be a 
+background to the background, but while i scaled them i couldn't keep the 
+repeateability of the single columns, plus because of the different pattern in 
+the wall, so i just made various ready to use combinations. 
+I suggest also using them as a tilemap, just not with the grid separating the 
+single columns but the single large sections and use them as pieces, as 
+indicated in the measurements section. 
+If you wonder why those sections are divided by a black band, it's because i 
+envisioned the parallax movement, in the project i made these for, to be only 
+along the x axis, so that section, considering those columns are slightly 
+smaller than the other, is to fill the missing part to make them connect to the 
+same grid as the columns in the foreground. That said, you're free to ditch 
+this system and to cut the dark sections, or to just not use these, but only 
+the normal columns. 
+
+those extra "internal columns", as i named, were so to create an even closer 
+foreground and some "rooms", so to say, if there was ever the need. the idea for
+them was the make them bound to the terrain tiles, no parallax movement, and 
+they connect slightly different from the normal ones, but they can still be made 
+taller by repeating the SQ of the pillar, you just have to use one from the base
+ones because here they are too small to have one. 
+As you can see, they have a separate background, so tht you may use them freely 
+with or without it, you just have to placve it ona a layer underneat, or just 
+merge the images on PH and make one singular piece yourself.
+The background is vertically repeatable by using the one without the arch 
+shadow, so remember to use that as a measure unit per say when modifying the
+height of it. 
+
+------------------------------------------------------------------------------
+You are free to rearrange all of the pieces and create your own tilemap 
+organized in a way that you like, the way i put them was just a composition that
+i found to be good enough to be clear, understandable and synthetic, but you 
+could have a different intepretation of it.  
+
+To ease navigation of the assets in the PSD files, i strongly recommend to turn on 
+the automatic selection for the drag tool, that lets you drag whatever piece you
+want just by clicking on it, without seleceting the layer first. 
+
+To activate and deactivate the grids i made i photoshop, press Ctrl+H.
+
+To create new ones, hold Ctrl or use the drag tool while dragging one from the 
+rulers on the board of the canvas. 
+
+-------------------------------------------------------------------------------
+
+The mushrooms were made mostly as a cheap and quick decorative lightsource, that
+is way i made them glowy white, so that afterwards we could add enviromnetal 
+lights on top of them through unity. 
+You're free to use them as you want, or not use them at all. 
+
+-------------------------------------------------------------------------------
+
+As stated at the bottom of the description, the license specification, you are 
+free to use this pack, modify it and share it in any way you want, i just ask
+for you to mention me as the original author in eventual credits, descriptions
+or else; both because i would like for people to be able to find me and because
+i'm genuinely curious to see what you and other people make out of my work. 
+ 
+You're not allowed to directly sell this pack or projects and works containing 
+it. You can however earn donations from works and projects containing this pack.
+You can ho
