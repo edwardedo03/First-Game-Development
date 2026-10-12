@@ -58,14 +58,12 @@ func _physics_process(delta: float) -> void:
 
 			if direction != 0:
 				update_facing(direction)
-				#wall_check.target_position.x = direction * 15
-				#ledge_check.position.x = direction * 15
-				
+
 				wall_check.target_position = Vector2(direction * 30, 0)
-				
+
 				ledge_check.position.x = abs(ledge_check.position.x) * direction
-				ledge_check.target_position = Vector2(0, 17)
-				
+				ledge_check.target_position = Vector2(0, 65)
+
 				wall_check.force_raycast_update()
 				ledge_check.force_raycast_update()
 
@@ -75,6 +73,7 @@ func _physics_process(delta: float) -> void:
 
 				if hit_wall or hit_ledge:
 					velocity.y = JUMP_VELOCITY
+					velocity.x = sign(player.global_position.x - global_position.x) * (SPEED * 2)
 
 			if is_on_floor():
 				animated_sprite.play("run")

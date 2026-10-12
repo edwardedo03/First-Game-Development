@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c3aplu6ai5ujc"]
+
+[ext_resource type="Texture2D" uid="uid://bw7a7ha5cbqor" path="res://assets/item/gate/88.png" id="1_xfvdi"]
+[ext_resource type="Script" uid="uid://ch2w05lncctvd" path="res://scripts/gate.gd" id="1_xwxio"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bcn5p"]
+radius = 59.1
+
+[node name="Gate" type="Area2D" unique_id=735985940]
+collision_mask = 15
+script = ExtResource("1_xwxio")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=336884791]
+texture = ExtResource("1_xfvdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=423752104]
+position = Vector2(3, 6)
+shape = SubResource("CircleShape2D_bcn5p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
