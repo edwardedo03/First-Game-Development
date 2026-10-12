@@ -5,6 +5,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iutbn"]
 
 [node name="DeathArea" type="Area2D" unique_id=678599631]
+collision_mask = 15
 script = ExtResource("1_wtpbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=557642899]

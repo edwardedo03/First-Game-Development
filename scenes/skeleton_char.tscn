@@ -629,9 +629,11 @@ radius = 9.0
 height = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_235l7"]
-size = Vector2(30, 29)
+size = Vector2(25, 29)
 
 [node name="Skeleton" type="CharacterBody2D" unique_id=270025622 groups=["player"]]
+collision_layer = 2
+collision_mask = 3
 floor_max_angle = 1.2217305
 script = ExtResource("1_ola05")
 
@@ -639,7 +641,7 @@ script = ExtResource("1_ola05")
 position = Vector2(-2.3841858e-07, 2.3841858e-07)
 scale = Vector2(0.055451393, 0.056777593)
 sprite_frames = SubResource("SpriteFrames_iutbn")
-animation = &"slash"
+animation = &"damaged"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1054783544]
@@ -647,9 +649,11 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_ol44e")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1556958930]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=536279385]
-position = Vector2(4, 1.5)
+position = Vector2(6.5, 1.5)
 shape = SubResource("RectangleShape2D_235l7")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -12,6 +12,7 @@ var health: int = 50
 var is_attacking: bool = false
 var is_dead: bool = false
 var can_attack: bool = true
+var is_damaged: bool = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var wall_check = $WallCheck
@@ -27,6 +28,11 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+	if is_damaged:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
 
 	if is_attacking:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -52,14 +58,22 @@ func _physics_process(delta: float) -> void:
 
 			if direction != 0:
 				update_facing(direction)
-				wall_check.target_position.x = direction * 15
-				ledge_check.position.x = direction * 15
+				#wall_check.target_position.x = direction * 15
+				#ledge_check.position.x = direction * 15
+				
+				wall_check.target_position = Vector2(direction * 30, 0)
+				
+				ledge_check.position.x = abs(ledge_check.position.x) * direction
+				ledge_check.target_position = Vector2(0, 17)
+				
+				wall_check.force_raycast_update()
+				ledge_check.force_raycast_update()
 
 			if is_on_floor():
 				var hit_wall = wall_check.is_colliding()
 				var hit_ledge = not ledge_check.is_colliding()
-				
-				if (hit_wall or hit_ledge) and player.global_position.y < global_position.y - 30:
+
+				if hit_wall or hit_ledge:
 					velocity.y = JUMP_VELOCITY
 
 			if is_on_floor():
@@ -108,6 +122,10 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 				break
 
 func take_damage(amount: int) -> void:
+	is_damaged = true
+	is_attacking = false
+	can_attack = false
+	
 	health -= amount
 	print('Enemy kena damage, sisa HP: ', health)
 	
@@ -117,6 +135,8 @@ func take_damage(amount: int) -> void:
 	
 	if health <= 0:
 		die()
+	else:
+		animated_sprite.play("damaged")
 		
 func die() -> void:
 	is_dead = true
@@ -133,5 +153,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "slash":
 		is_attacking = false
 		
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.2).timeout # attack speed
+		can_attack = true
+		
+	if animated_sprite.animation == "damaged":
+		is_damaged = false
 		can_attack = true

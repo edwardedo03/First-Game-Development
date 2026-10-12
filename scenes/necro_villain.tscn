@@ -3,28 +3,40 @@
 [ext_resource type="Texture2D" uid="uid://bfu22bwnaa7kp" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_000.png" id="1_qricp"]
 [ext_resource type="Script" uid="uid://brr7opc1dlc4" path="res://scripts/necro_villain.gd" id="1_y82wb"]
 [ext_resource type="Texture2D" uid="uid://jtnfhbudoqd" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_000.png" id="2_8vwoc"]
+[ext_resource type="Texture2D" uid="uid://ueexohh1acun" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_000.png" id="2_s52ci"]
 [ext_resource type="Texture2D" uid="uid://dwossgf5brjyt" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_001.png" id="2_y82wb"]
 [ext_resource type="Texture2D" uid="uid://lpgg6birjvgx" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_001.png" id="3_235l7"]
 [ext_resource type="Texture2D" uid="uid://dy2mmo13pcylb" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_002.png" id="3_mfsck"]
+[ext_resource type="Texture2D" uid="uid://csgneqlxj1chn" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_001.png" id="3_q6fba"]
+[ext_resource type="Texture2D" uid="uid://s03wyt61x0dj" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_002.png" id="4_2ept0"]
 [ext_resource type="Texture2D" uid="uid://ddy831d1p1k8k" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_003.png" id="4_ch1o7"]
 [ext_resource type="Texture2D" uid="uid://b1ye17voxovjk" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_002.png" id="4_p1fc8"]
+[ext_resource type="Texture2D" uid="uid://c00khhpcx6twe" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_003.png" id="5_hsucw"]
 [ext_resource type="Texture2D" uid="uid://ddmcktwye7wud" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_003.png" id="5_mxuu8"]
 [ext_resource type="Texture2D" uid="uid://b7dmiht35sc5" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_004.png" id="5_nomgc"]
+[ext_resource type="Texture2D" uid="uid://bdarrhqhmjxs2" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_004.png" id="6_8lsbc"]
 [ext_resource type="Texture2D" uid="uid://ds3gmssmrppo4" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_004.png" id="6_pe1h0"]
 [ext_resource type="Texture2D" uid="uid://c40oyrlsxh2mv" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_005.png" id="6_rtmqt"]
+[ext_resource type="Texture2D" uid="uid://bl10lvnjl7gl2" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_005.png" id="7_5cx0q"]
 [ext_resource type="Texture2D" uid="uid://cijialqtbrgot" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_005.png" id="7_abh75"]
 [ext_resource type="Texture2D" uid="uid://dmmqy7nsmytga" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_006.png" id="7_khyq8"]
 [ext_resource type="Texture2D" uid="uid://cjddnfgemepcf" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_007.png" id="8_75jbs"]
+[ext_resource type="Texture2D" uid="uid://c67lnkd2c1iki" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_006.png" id="8_cusce"]
 [ext_resource type="Texture2D" uid="uid://c8xc7mfintjgc" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_006.png" id="8_u26a2"]
 [ext_resource type="Texture2D" uid="uid://djt4maoo88r8f" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_008.png" id="9_0y1u8"]
 [ext_resource type="Texture2D" uid="uid://743ietdcct6o" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_007.png" id="9_u05hk"]
+[ext_resource type="Texture2D" uid="uid://bq8g0j1aduso2" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_007.png" id="9_xrhnn"]
 [ext_resource type="Texture2D" uid="uid://cy4n5sqimmrb8" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_008.png" id="10_m4d3l"]
 [ext_resource type="Texture2D" uid="uid://dqu32pwv1qapr" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_009.png" id="10_nnqn0"]
+[ext_resource type="Texture2D" uid="uid://d1kqsym52cpsa" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_008.png" id="10_op5rl"]
+[ext_resource type="Texture2D" uid="uid://byhl5oyqhv68m" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_009.png" id="11_ncftr"]
 [ext_resource type="Texture2D" uid="uid://ixdhw2gp8n2a" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_010.png" id="11_odmbw"]
 [ext_resource type="Texture2D" uid="uid://bkrwjdu071m6u" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_009.png" id="11_qtoi8"]
 [ext_resource type="Texture2D" uid="uid://cxglqkgmfmqki" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_010.png" id="12_3jdwp"]
+[ext_resource type="Texture2D" uid="uid://d016ga04hxf82" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_010.png" id="12_scr0c"]
 [ext_resource type="Texture2D" uid="uid://ptohscsn2iih" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_011.png" id="12_vhyyl"]
 [ext_resource type="Texture2D" uid="uid://bee0rik4yotru" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_011.png" id="13_btkil"]
+[ext_resource type="Texture2D" uid="uid://1g4q5kw1c7ye" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Hurt/0_Necromancer_of_the_Shadow_Hurt_011.png" id="13_bubmv"]
 [ext_resource type="Texture2D" uid="uid://1yl4vtrl8hw4" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_012.png" id="13_dyac8"]
 [ext_resource type="Texture2D" uid="uid://cv1i7whkdbhtm" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Idle/0_Necromancer_of_the_Shadow_Idle_013.png" id="14_fdg8d"]
 [ext_resource type="Texture2D" uid="uid://dluc4c06wn261" path="res://assets/sprites/necromancer/Necromancer_of_the_Shadow_2/PNG/PNG Sequences/Dying/0_Necromancer_of_the_Shadow_Dying_012.png" id="14_s52ci"]
@@ -67,6 +79,47 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iutbn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s52ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q6fba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2ept0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hsucw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8lsbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5cx0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cusce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xrhnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_op5rl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ncftr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_scr0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bubmv")
+}],
+"loop": 0,
+"name": &"damaged",
+"speed": 37.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_8vwoc")
@@ -293,12 +346,14 @@ size = Vector2(254, 90)
 size = Vector2(31, 34)
 
 [node name="NecroVillain" type="CharacterBody2D" unique_id=2014762353 groups=["enemy"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_y82wb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=797545296]
 scale = Vector2(0.057, 0.057)
 sprite_frames = SubResource("SpriteFrames_iutbn")
-animation = &"slash"
+animation = &"damaged"
 autoplay = "idle"
 frame = 11
 frame_progress = 1.0
@@ -308,20 +363,27 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_1bk8i")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=501377198]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=801694136]
 position = Vector2(-3, -3)
 shape = SubResource("RectangleShape2D_fdg8d")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=588834397]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1939415275]
 position = Vector2(7.5, 1)
 shape = SubResource("RectangleShape2D_1bk8i")
 
 [node name="LedgeCheck" type="RayCast2D" parent="." unique_id=981693818]
+position = Vector2(25, 0)
+target_position = Vector2(0, 17)
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=1247583644]
+target_position = Vector2(30, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
