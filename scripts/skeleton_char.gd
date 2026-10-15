@@ -36,7 +36,7 @@ func _ready() -> void:
 	attack_collision_offset_x = abs(attack_collision.position.x)
 	
 	if not hud:
-		hud = get_node_or_null('../HUD')
+		hud = get_node_or_null('HUD')
 	if hud:
 		hud.update_health(current_health, max_health)
 		hud.update_stamina(current_stamina, max_stamina)
@@ -106,7 +106,6 @@ func _physics_process(delta: float) -> void:
 		if is_running:
 			animated_sprite.play('run_slash')
 		else:
-			print(is_running)
 			animated_sprite.play('slash')
 			
 	var current_speed = RUN_SPEED if is_running else SPEED
@@ -201,12 +200,11 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 					body.take_damage(PLAYER_ATTACK_DAMAGE)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	print("Animasi selesai: ", animated_sprite.animation)
 	
 	if animated_sprite.animation == 'slash' or animated_sprite.animation == 'run_slash':
 		is_attacking = false
 	elif animated_sprite.animation == 'damaged':
 		is_hurt = false
 	elif animated_sprite.animation == 'death':
-		print("RELOAD SCENE DIPANGGIL!")
+		print("RELOAD SCENE")
 		get_tree().reload_current_scene()

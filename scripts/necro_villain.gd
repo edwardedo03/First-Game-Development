@@ -22,6 +22,12 @@ var is_damaged: bool = false
 @onready var attack_collision = $AttackArea/CollisionShape2D
 var attack_collision_offset_x: float
 
+func _ready() -> void:
+	var current_map = get_tree().current_scene.name
+	if GameManager.dead_enemies.has(current_map):
+		if name in GameManager.dead_enemies[current_map]:
+			queue_free()
+
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -138,6 +144,14 @@ func take_damage(amount: int) -> void:
 		animated_sprite.play("damaged")
 		
 func die() -> void:
+	var current_map = get_tree().current_scene.name
+	
+	if not GameManager.dead_enemies.has(current_map):
+		GameManager.dead_enemies[current_map] = []
+		
+	if not (name in GameManager.dead_enemies[current_map]):
+		GameManager.dead_enemies[current_map].append(name)
+	
 	is_dead = true
 	velocity = Vector2.ZERO
 	animated_sprite.play("death")

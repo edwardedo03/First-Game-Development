@@ -40,6 +40,7 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	GameManager.reset_game_state()
 	get_tree().reload_current_scene()
 
 func _on_quit_pressed() -> void:
