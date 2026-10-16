@@ -4,6 +4,7 @@ const SPEED = 130.0
 const RUN_SPEED = 200
 const JUMP_VELOCITY = -280.0
 const FALL_DAMAGE_THRESHOLD = 420.0
+const CLIMB_SPEED = 80.0 #LADDER
 
 var max_health: int = 100
 var current_health: int = 100
@@ -25,15 +26,32 @@ var attack_collision_offset_x: float
 const PLAYER_ATTACK_DAMAGE = 5
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var collision: CollisionShape2D = $CollisionShape2D #LADDER
+
 @export var hud: CanvasLayer
+@export var ladder_layer: TileMapLayer #LADDER (import tilemap ke char)
+@export var feet_margin := 2.0 #LADDER (biar ada jarak kaki ke bawah, supaya seluruh badan char ketika naik tangga full diatas tangga)
 
 var is_attacking: bool = false
 var is_running: bool = false
 var is_hurt: bool = false
 var is_dead: bool = false
+var is_climbing := false #LADDER
+var feet_y := 0.0 #LADDER (ngitung jarak dari titik pusat ke kaki)
 
 func _ready() -> void:
 	attack_collision_offset_x = abs(attack_collision.position.x)
+	
+	var shape = collision.shape
+
+	if shape is RectangleShape2D:
+		feet_y = collision.position.y + shape.size.y / 2.0
+	elif shape is CapsuleShape2D:
+		feet_y = collision.position.y + shape.height / 2.0
+	
+	#var rect_shape := collision.shape as RectangleShape2D #LADDER (dipake buat pengukuran aja)
+	#if rect_shape: #LADDER
+		#feet_y = collision.position.y + rect_shape.size.y / 2.0 #LADDER (ngitung jarak dari titik pusat node char ke kaki)
 	
 	if not hud:
 		hud = get_node_or_null('HUD')
@@ -42,6 +60,9 @@ func _ready() -> void:
 		hud.update_stamina(current_stamina, max_stamina)
 
 func _physics_process(delta: float) -> void:
+	var direction := Input.get_axis("ui_left", "ui_right")
+	var climb_dir := Input.get_axis("ui_up", "ui_down")
+	
 	if is_dead:
 		animated_sprite.play('death')
 		if not is_on_floor():
@@ -67,7 +88,38 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	var direction := Input.get_axis("ui_left", "ui_right")
+	# LADDER
+	var probe := Vector2(0, feet_y + feet_margin) #LADDER (geser titik tengah, untuk deteksi di feet_cell)
+	var body_cell = get_ladder_cell(global_position) #LADDER (cek pusat node char kena ladder ngga)
+	var feet_cell = get_ladder_cell(global_position + probe) #LADDER (cek di kaki kena ladder ngga)
+	var ladder_cell = body_cell if body_cell != null else feet_cell #LADDER (tentuin yg kena)
+
+	if ladder_cell != null and climb_dir != 0 and not is_climbing: #LADDER
+		is_climbing = true #LADDER
+		global_position.x = cell_center_x(ladder_cell) #LADDER (ke tengahin posisi di laddernya)
+
+	if is_climbing: #LADDER
+		if ladder_cell == null or direction != 0: #LADDER (cek masih di tangga atau ngga, dan gerak kanan kiri atau ngga)
+			is_climbing = false #LADDER (ubah ke false)
+		elif is_on_floor() and climb_dir > 0: #LADDER (kalo di lantai, dan player klik turun (positif dalam y artinya ke bawah))
+			is_climbing = false #LADDER (ubah ke false)
+
+	if is_climbing: #LADDER
+		velocity.x = 0 #LADDER (biar ga kanan kiri)
+		velocity.y = climb_dir * CLIMB_SPEED #LADDER (kecepatan naik tangga)
+
+		if climb_dir < 0 and feet_cell != null: #LADDER (cek lagi naik dan kaki masih di tangga)
+			var next_probe := global_position + probe + Vector2(0, velocity.y * delta) #LADDER (perkiraan posisi kaki dalam 1 frame ke depan)
+			if get_ladder_cell(next_probe) == null: #LADDER (kalo udh ga di ladder, ga bisa naik lagi)
+				velocity.y = 0 #LADDER
+
+		if Input.is_action_just_pressed("ui_accept"): #LADDER (kalo loncat)
+			is_climbing = false #LADDER (ke cancel naik tangganya)
+			velocity.y = JUMP_VELOCITY #LADDER
+		
+		move_and_slide() #LADDER
+		return #LADDER
+	## LADDER
 	
 	var wants_to_run = Input.is_action_pressed("run") and direction != 0
 	
@@ -208,3 +260,15 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif animated_sprite.animation == 'death':
 		print("RELOAD SCENE")
 		get_tree().reload_current_scene()
+
+func get_ladder_cell(pos: Vector2) -> Variant: #LADDER (buat ubah koordinat / ngecek koordinat yg dikirimkan berada di koordinat ladder ngga)
+	if ladder_layer == null: #LADDER
+		return null #LADDER
+	var cell := ladder_layer.local_to_map(ladder_layer.to_local(pos)) #LADDER (ubah posisi lokal ke koordinat petak)
+	if ladder_layer.get_cell_source_id(cell) != -1: #LADDER (cek di koordinat cell, terisi ladder ga)
+		return cell #LADDER
+	return null #LADDER
+
+func cell_center_x(cell: Vector2i) -> float: #LADDER
+	var local_center = ladder_layer.map_to_local(cell) #LADDER ambil koordinat dari tilemap (tengahnya mana)
+	return ladder_layer.to_global(local_center).x #LADDER trus diimplementasi di posisi globalnya

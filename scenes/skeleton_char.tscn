@@ -501,7 +501,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_foc02")
 }],
-"loop": 0,
+"loop": 2,
 "name": &"slide",
 "speed": 16.0
 }, {
