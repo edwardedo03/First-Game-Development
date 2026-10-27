@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
-const SPEED = 130.0
-const RUN_SPEED = 200
-const JUMP_VELOCITY = -280.0
+var SPEED = 130.0
+var RUN_SPEED = 200
+var JUMP_VELOCITY = -260.0
 const FALL_DAMAGE_THRESHOLD = 420.0
 const CLIMB_SPEED = 80.0 #LADDER
+
+var lava_layer: TileMapLayer
+var lava_damage: int = 5
+var lava_damage_interval: float = 0.3
+var lava_damage_timer: float = 0.0
 
 var max_health: int = 100
 var current_health: int = 100
@@ -23,7 +28,7 @@ var previous_y_velocity: float = 0.0
 @onready var attack_area = $AttackArea
 @onready var attack_collision = $AttackArea/CollisionShape2D
 var attack_collision_offset_x: float
-const PLAYER_ATTACK_DAMAGE = 5
+var PLAYER_ATTACK_DAMAGE = 5
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D #LADDER
@@ -186,6 +191,8 @@ func _physics_process(delta: float) -> void:
 	update_animation(direction)
 
 	move_and_slide()
+	
+	handle_lava_damage(delta)
 
 func update_facing(direction: float) -> void:
 	if direction == 0:
@@ -209,9 +216,6 @@ func update_animation(direction: float) -> void:
 				animated_sprite.play('walk')
 		else:
 			animated_sprite.play('idle')
-
-func jump_power_up() -> void:
-	max_jumps = 2
 	
 func take_damage(amount: int) -> void:
 	current_health -= amount
@@ -274,3 +278,55 @@ func get_ladder_cell(pos: Vector2) -> Variant: #LADDER (buat ubah koordinat / ng
 func cell_center_x(cell: Vector2i) -> float: #LADDER
 	var local_center = ladder_layer.map_to_local(cell) #LADDER ambil koordinat dari tilemap (tengahnya mana)
 	return ladder_layer.to_global(local_center).x #LADDER trus diimplementasi di posisi globalnya
+
+# Lava
+func find_lava_layer() -> void:
+	lava_layer = get_tree().get_first_node_in_group("lava_layer") as TileMapLayer
+	
+func is_touching_lava() -> bool:
+	if lava_layer == null:
+		return false
+
+	var feet_position = global_position + Vector2(0, feet_y + 2.0)
+	var local_position = lava_layer.to_local(feet_position)
+	var cell = lava_layer.local_to_map(local_position)
+
+	return lava_layer.get_cell_source_id(cell) != -1
+	
+func handle_lava_damage(delta: float) -> void:
+	if is_touching_lava():
+		lava_damage_timer -= delta
+
+		if lava_damage_timer <= 0.0:
+			take_damage(lava_damage)
+			
+			if not is_dead:
+				velocity.y = JUMP_VELOCITY
+				
+			lava_damage_timer = lava_damage_interval
+	else:
+		lava_damage_timer = 0.0
+
+# power collected
+
+func apply_power_up(power_type: String) -> void:
+	match power_type:
+		"double_jump":
+			max_jumps = 2
+			print("Power-up: Double Jump!")
+
+		"speed":
+			SPEED += 30.0
+			RUN_SPEED += 30.0
+			print("Power-up: Speed meningkat!")
+			
+		"heal":
+			current_health = min(current_health + 15, max_health)
+			if hud:
+				hud.update_health(current_health, max_health)
+			print("Power-up: Heal!")
+
+# nambah attack damage tiap kalahih musuh kroco
+func gain_attack_damage(amount: int) -> void:
+	PLAYER_ATTACK_DAMAGE += amount
+	print("Attack damage meningkat menjadi: ", PLAYER_ATTACK_DAMAGE)

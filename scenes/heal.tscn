@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://g4r881747t1k"]
+
+[ext_resource type="Script" uid="uid://btko2ub54u2vt" path="res://scripts/heal.gd" id="1_8vb04"]
+[ext_resource type="Texture2D" uid="uid://cbloey1h0r4ar" path="res://assets/item/2/30 Free Pixel Art Skill Icons - Dani Melich/Transparent PNGs/holy_skill_01.png" id="1_iej0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iutbn"]
+
+[node name="Heal" type="Area2D" unique_id=921280052]
+collision_mask = 15
+script = ExtResource("1_8vb04")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1502872271]
+texture = ExtResource("1_iej0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=340814128]
+scale = Vector2(1.575, 1.575)
+shape = SubResource("CircleShape2D_iutbn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

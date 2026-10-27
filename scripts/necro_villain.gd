@@ -23,7 +23,8 @@ var is_damaged: bool = false
 var attack_collision_offset_x: float
 
 func _ready() -> void:
-	var current_map = get_tree().current_scene.name
+	var current_map = get_tree().current_scene.scene_file_path
+	
 	if GameManager.dead_enemies.has(current_map):
 		if name in GameManager.dead_enemies[current_map]:
 			queue_free()
@@ -144,13 +145,16 @@ func take_damage(amount: int) -> void:
 		animated_sprite.play("damaged")
 		
 func die() -> void:
-	var current_map = get_tree().current_scene.name
+	var current_map = get_tree().current_scene.scene_file_path
 	
 	if not GameManager.dead_enemies.has(current_map):
 		GameManager.dead_enemies[current_map] = []
 		
 	if not (name in GameManager.dead_enemies[current_map]):
 		GameManager.dead_enemies[current_map].append(name)
+		
+		if is_instance_valid(player):
+			player.gain_attack_damage(5)
 	
 	is_dead = true
 	velocity = Vector2.ZERO
@@ -166,7 +170,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "slash":
 		is_attacking = false
 		
-		await get_tree().create_timer(0.2).timeout # attack speed
+		await get_tree().create_timer(0.6).timeout # attack speed
 		can_attack = true
 		
 	if animated_sprite.animation == "damaged":

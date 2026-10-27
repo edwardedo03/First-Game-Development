@@ -40,14 +40,17 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
-	GameManager.reset_game_state()
+	if not is_inside_tree():
+			return
+	GameManager.respawn_to_main_map()
+	# GameManager.reset_game_state()
 	
-	var player = get_tree().get_first_node_in_group("player")
-	if player:
-		player.queue_free()
+	# var player = get_tree().get_first_node_in_group("player")
+	# if player:
+		# player.queue_free()
 	
 	#get_tree().reload_current_scene()
-	get_tree().change_scene_to_file("res://scenes/main_map.tscn")
+	# get_tree().change_scene_to_file("res://scenes/main_map.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false

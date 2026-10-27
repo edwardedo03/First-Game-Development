@@ -43,6 +43,8 @@ func transition_to_scene(target_path: String, gate_name: String, player_node: No
 		"ladder_layer"
 	) as TileMapLayer
 	
+	player_node.find_lava_layer()
+	
 	if player_node.ladder_layer == null:
 		push_warning("TileMapLayer tangga tidak ditemukan pada scene baru")
 	
@@ -83,13 +85,13 @@ func setup_camera_limits(player_node: Node2D, current_scene: Node) -> void:
 	camera.enabled = true
 	camera.make_current()
 	camera.reset_smoothing()
-	
 
 
 func reset_game_state() -> void:
 	dead_enemies.clear()
 	target_gate_destination = ""
 	
+
 func respawn_to_main_map() -> void:
 	reset_game_state()
 	var error := get_tree().change_scene_to_file(MAIN_SCENE_PATH)

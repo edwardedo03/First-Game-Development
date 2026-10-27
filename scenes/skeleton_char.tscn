@@ -633,7 +633,7 @@ size = Vector2(25, 29)
 
 [node name="Skeleton" type="CharacterBody2D" unique_id=270025622 groups=["player"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 floor_max_angle = 1.2217305
 script = ExtResource("1_ola05")
 
@@ -650,7 +650,7 @@ shape = SubResource("CapsuleShape2D_ol44e")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1556958930]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=536279385]
 position = Vector2(6.5, 1.5)
