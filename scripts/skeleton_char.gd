@@ -258,8 +258,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif animated_sprite.animation == 'damaged':
 		is_hurt = false
 	elif animated_sprite.animation == 'death':
-		print("RELOAD SCENE")
-		get_tree().reload_current_scene()
+		if not is_inside_tree():
+			return
+		GameManager.respawn_to_main_map()
+		#get_tree().reload_current_scene()
 
 func get_ladder_cell(pos: Vector2) -> Variant: #LADDER (buat ubah koordinat / ngecek koordinat yg dikirimkan berada di koordinat ladder ngga)
 	if ladder_layer == null: #LADDER
