@@ -12569,6 +12569,16 @@ position = Vector2(785, 655)
 scale = Vector2(0.69, 0.69)
 
 [node name="GoblinVillain" parent="." unique_id=780417757 instance=ExtResource("33_xi2te")]
-position = Vector2(426, 542)
-patrol_left = 40.0
-patrol_right = 40.0
+position = Vector2(424, 540)
+patrol_left = 75.0
+patrol_right = 75.0
+
+[node name="GoblinVillain2" parent="." unique_id=2000833989 instance=ExtResource("33_xi2te")]
+position = Vector2(319, 427)
+patrol_left = 35.0
+patrol_right = 35.0
+
+[node name="GoblinVillain3" parent="." unique_id=1700985767 instance=ExtResource("33_xi2te")]
+position = Vector2(933, 622)
+patrol_left = 100.0
+patrol_right = 100.0
