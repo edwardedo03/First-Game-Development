@@ -88,6 +88,18 @@ region = Rect2(96.08714, 230.9397, 48.133255, 6.4773407)
 atlas = ExtResource("4_5pdws")
 region = Rect2(96.02599, 230.94936, 48.36309, 6.276123)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iutbn"]
+bg_color = Color(0.32156864, 0.30980393, 0.4509804, 1)
+border_width_left = 3
+border_width_top = 6
+border_width_right = 3
+border_width_bottom = 6
+border_color = Color(0.24313726, 0.15294118, 0.1882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="HUD" type="CanvasLayer" unique_id=1007076508]
 script = ExtResource("1_6fi6k")
 
@@ -120,16 +132,16 @@ vertical_alignment = 1
 
 [node name="HintPanel" type="PanelContainer" parent="." unique_id=556368413]
 visible = false
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -245.95496
-offset_top = -478.065
-offset_right = -65.30493
-offset_bottom = -199.065
-grow_horizontal = 0
+offset_left = -147.0
+offset_top = -237.5
+offset_right = 147.0
+offset_bottom = 237.5
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qpprf")
 script = ExtResource("10_mphia")
@@ -151,7 +163,20 @@ text = "A / D : Move
 Space : Jump
 R : Open Hint
 T : Open Task
-E : Interact"
+E : Interact (Gate, Rope)"
+
+[node name="TitleLabel2" type="Label" parent="HintPanel/VBoxContainer" unique_id=1177838587]
+layout_mode = 2
+text = "TIPS"
+horizontal_alignment = 1
+
+[node name="HintLabel2" type="Label" parent="HintPanel/VBoxContainer" unique_id=1269706009]
+layout_mode = 2
+text = "Reconsider your damage 
+and health stats before entering 
+a gate especially a red evil gate, 
+try to boost them before taking 
+on a boss."
 
 [node name="CloseButton" type="Button" parent="HintPanel/VBoxContainer" unique_id=2025931250]
 layout_mode = 2
@@ -189,16 +214,16 @@ vertical_alignment = 1
 
 [node name="TaskPanel" type="PanelContainer" parent="." unique_id=416725367]
 visible = false
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -245.95496
-offset_top = -428.31
-offset_right = -65.30493
-offset_bottom = -279.31
-grow_horizontal = 0
+offset_left = -296.5
+offset_top = -113.5
+offset_right = 296.5
+offset_bottom = 113.5
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qpprf")
 script = ExtResource("11_0m4u7")
@@ -214,6 +239,10 @@ horizontal_alignment = 1
 
 [node name="TaskLabel" type="Label" parent="TaskPanel/VBoxContainer" unique_id=2001839300]
 layout_mode = 2
+text = "● Kill as Many Enemies to Increase Your Max Health and Attack Damage
+● Find 3 Gate to Power Up Your Stats
+● Defeat All Bosses
+● Kill the Final Boss Inside the Red Evil Gate to Finish the Game"
 
 [node name="CloseButton" type="Button" parent="TaskPanel/VBoxContainer" unique_id=1504479524]
 layout_mode = 2
@@ -295,6 +324,17 @@ texture_under = SubResource("AtlasTexture_ys2d1")
 texture_over = SubResource("AtlasTexture_4thqg")
 texture_progress = SubResource("AtlasTexture_2jl2e")
 
+[node name="StaminaBar" type="TextureProgressBar" parent="." unique_id=118431157]
+offset_left = 38.42
+offset_top = 49.28
+offset_right = 78.42001
+offset_bottom = 89.27983
+scale = Vector2(3.42, 0.245)
+value = 70.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_iutbn")
+texture_progress = SubResource("AtlasTexture_bcn5p")
+
 [node name="PauseButton" type="TextureButton" parent="." unique_id=900612747]
 process_mode = 1
 anchors_preset = 1
@@ -326,16 +366,52 @@ texture = ExtResource("4_6fi6k")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StaminaBar" type="TextureProgressBar" parent="." unique_id=118431157]
-offset_left = 38.42
-offset_top = 49.28
-offset_right = 78.42001
-offset_bottom = 89.27983
-scale = Vector2(3.42, 0.245)
-value = 70.0
-nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_iutbn")
-texture_progress = SubResource("AtlasTexture_bcn5p")
+[node name="AttackDamagePanel" type="Panel" parent="." unique_id=1604128235]
+offset_left = 11.0
+offset_top = 68.0
+offset_right = 188.0
+offset_bottom = 115.035
+theme_override_styles/panel = SubResource("StyleBoxFlat_iutbn")
+
+[node name="AttackDamageLabel" type="Label" parent="AttackDamagePanel" unique_id=31980085]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -11.5
+offset_right = 68.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Attack Damage: 5"
+
+[node name="HealthPanel" type="Panel" parent="." unique_id=483564889]
+offset_left = 154.0
+offset_top = 13.0
+offset_right = 240.0
+offset_bottom = 45.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iutbn")
+
+[node name="HealthLabel" type="Label" parent="HealthPanel" unique_id=1328287292]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="HintButton" to="HintPanel" method="_on_hint_button_pressed"]
 [connection signal="pressed" from="TaskButton" to="TaskPanel" method="_on_task_button_pressed"]

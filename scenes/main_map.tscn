@@ -11604,6 +11604,16 @@ sources/20 = SubResource("TileSetAtlasSource_4kkmd")
 sources/21 = SubResource("TileSetAtlasSource_m75v2")
 sources/22 = SubResource("TileSetAtlasSource_xnq8m")
 
+[sub_resource type="Gradient" id="Gradient_on5gu"]
+offsets = PackedFloat32Array(0.46025103, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iutbn"]
+gradient = SubResource("Gradient_on5gu")
+fill = 1
+fill_from = Vector2(0.51282054, 0.47863248)
+fill_to = Vector2(0.52991456, 0)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_on5gu"]
 texture = ExtResource("27_jikhd")
 0:0/0 = 0
@@ -12469,12 +12479,26 @@ requires_no_boss = true
 [node name="Sprite2D" type="Sprite2D" parent="TrapGate" unique_id=1060708389]
 texture = ExtResource("26_36g7h")
 
+[node name="PointLight2D" type="PointLight2D" parent="TrapGate" unique_id=58831287]
+position = Vector2(2.9263146, 6.3157897)
+color = Color(0.83, 0.6717467, 0.0996, 0.8627451)
+energy = 1.36
+texture = SubResource("GradientTexture2D_iutbn")
+texture_scale = 2.75
+
 [node name="Gate1" parent="." unique_id=296705866 instance=ExtResource("19_j8ata")]
 position = Vector2(902, 336.00003)
 scale = Vector2(0.40500003, 0.40500003)
 target_scene = "uid://drcihx4sev1eu"
 scene_destination = "gate_1"
 requires_no_boss = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Gate1" unique_id=630695519]
+position = Vector2(2.9263146, 6.3157897)
+color = Color(0.83, 0.6717467, 0.0996, 0.8627451)
+energy = 1.36
+texture = SubResource("GradientTexture2D_iutbn")
+texture_scale = 2.75
 
 [node name="main-gate1" type="Marker2D" parent="." unique_id=1484493422]
 position = Vector2(903.68, 340.32)
@@ -12485,6 +12509,13 @@ scale = Vector2(0.37, 0.37)
 target_scene = "uid://cb4crkrtm0hbw"
 scene_destination = "gate_2"
 requires_no_boss = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Gate2" unique_id=2119643980]
+position = Vector2(2.9263146, 6.3157897)
+color = Color(0.83, 0.6717467, 0.0996, 0.8627451)
+energy = 1.36
+texture = SubResource("GradientTexture2D_iutbn")
+texture_scale = 2.75
 
 [node name="main-gate2" type="Marker2D" parent="." unique_id=721129080]
 position = Vector2(1014, 401)
@@ -12499,6 +12530,13 @@ scene_destination = "gate_final"
 position = Vector2(2.8569584, 17.142866)
 scale = Vector2(1.1857141, 1.1857141)
 texture = ExtResource("24_qvxoj")
+
+[node name="PointLight2D" type="PointLight2D" parent="FinalBossGate" unique_id=1144092661]
+position = Vector2(2.9263146, 6.3157897)
+color = Color(0.83, 0.6717467, 0.0996, 0.8627451)
+energy = 1.36
+texture = SubResource("GradientTexture2D_iutbn")
+texture_scale = 2.75
 
 [node name="main-gate-final" type="Marker2D" parent="." unique_id=1834165468]
 position = Vector2(546.555, 275)

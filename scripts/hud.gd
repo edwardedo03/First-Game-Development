@@ -4,6 +4,9 @@ extends CanvasLayer
 @onready var stamina_bar: TextureProgressBar = $StaminaBar
 @onready var pause_menu: Control = $Menu
 
+@onready var health_label: Label = $HealthPanel/HealthLabel
+@onready var attack_damage_label: Label = $AttackDamagePanel/AttackDamageLabel
+
 func _ready() -> void:
 	if pause_menu:
 		pause_menu.hide()
@@ -39,6 +42,9 @@ func update_health(current_hp: int, max_hp: int) -> void:
 	else:
 		call_deferred("update_health", current_hp, max_hp)
 		
+	if health_label:
+		health_label.text = "%d / %d" % [current_hp, max_hp]
+		
 func update_stamina(current_stamina: float, max_stamina: float) -> void:
 	if stamina_bar:
 		stamina_bar.max_value = max_stamina
@@ -69,4 +75,7 @@ func _on_quit_pressed() -> void:
 
 func _on_pause_button_pressed() -> void:
 	toggle_pause()
-	
+
+func update_attack_damage(damage: int) -> void:
+	if attack_damage_label:
+		attack_damage_label.text = "Attack Damage : %d" % damage

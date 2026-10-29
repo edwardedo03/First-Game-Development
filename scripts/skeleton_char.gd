@@ -70,6 +70,7 @@ func _ready() -> void:
 	if hud:
 		hud.update_health(current_health, max_health)
 		hud.update_stamina(current_stamina, max_stamina)
+		hud.update_attack_damage(PLAYER_ATTACK_DAMAGE)
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -325,11 +326,6 @@ func apply_power_up(power_type: String) -> void:
 		"double_jump":
 			max_jumps = 2
 			print("Power-up: Double Jump!")
-
-		"speed":
-			SPEED += 30.0
-			RUN_SPEED += 30.0
-			print("Power-up: Speed meningkat!")
 			
 		"heal":
 			current_health = min(current_health + 15, max_health)
@@ -341,6 +337,9 @@ func apply_power_up(power_type: String) -> void:
 func gain_attack_damage(amount: int) -> void:
 	PLAYER_ATTACK_DAMAGE += amount
 	print("Attack damage meningkat menjadi: ", PLAYER_ATTACK_DAMAGE)
+	
+	if hud:
+		hud.update_attack_damage(PLAYER_ATTACK_DAMAGE)
 	
 func gain_max_health(amount: int) -> void:
 	max_health += amount
@@ -393,6 +392,7 @@ func boss_power_up() -> void:
 	if hud:
 		hud.update_health(current_health, max_health)
 		hud.update_stamina(current_stamina, max_stamina)
+		hud.update_attack_damage(PLAYER_ATTACK_DAMAGE)
 
 
 # Rope Function
