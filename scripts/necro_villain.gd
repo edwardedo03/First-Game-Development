@@ -7,7 +7,7 @@ const ATTACK_DAMAGE = 15
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player: CharacterBody2D = null
 
-var health: int = 50
+var health: int = 70
 
 var is_attacking: bool = false
 var is_dead: bool = false
@@ -155,6 +155,7 @@ func die() -> void:
 		
 		if is_instance_valid(player):
 			player.gain_attack_damage(5)
+			player.gain_max_health(10)
 	
 	is_dead = true
 	velocity = Vector2.ZERO

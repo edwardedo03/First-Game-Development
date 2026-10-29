@@ -44,6 +44,13 @@ var is_dead: bool = false
 var is_climbing := false #LADDER
 var feet_y := 0.0 #LADDER (ngitung jarak dari titik pusat ke kaki)
 
+var defeated_bosses: Array[String] = []
+
+var is_using_rope: bool = false
+var rope_start_position: Vector2
+var rope_end_position: Vector2
+var rope_speed: float = 150.0
+
 func _ready() -> void:
 	attack_collision_offset_x = abs(attack_collision.position.x)
 	
@@ -75,6 +82,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0
 		move_and_slide()
+		return
+	
+	if is_using_rope:
+		handle_rope_movement(delta)
 		return
 	
 	if not is_on_floor():
@@ -330,3 +341,102 @@ func apply_power_up(power_type: String) -> void:
 func gain_attack_damage(amount: int) -> void:
 	PLAYER_ATTACK_DAMAGE += amount
 	print("Attack damage meningkat menjadi: ", PLAYER_ATTACK_DAMAGE)
+	
+func gain_max_health(amount: int) -> void:
+	max_health += amount
+	current_health += amount
+	print("Max health meningkat menjadi: ", max_health, ", Current health menjadi: ", current_health)
+	
+	current_health = min(current_health, max_health)
+	current_stamina = min(current_stamina, max_stamina)
+
+	if hud:
+		hud.update_health(current_health, max_health)
+		hud.update_stamina(current_stamina, max_stamina)
+	
+# power up after defeated a boss
+func boss_power_up() -> void:
+	for boss_id in GameManager.deafeated_bosses:
+		if boss_id in defeated_bosses:
+			continue
+		
+		match boss_id:
+			"golem":
+				SPEED += 20
+				RUN_SPEED += 20
+				max_health += 20
+				current_health += 20
+				max_stamina += 20
+				PLAYER_ATTACK_DAMAGE += 5
+			"dark_golem":
+				SPEED += 10
+				RUN_SPEED += 20
+				max_health += 30
+				current_health += 30
+				stamina_regen += 5
+				PLAYER_ATTACK_DAMAGE += 10
+			"ice_golem":
+				SPEED += 10
+				RUN_SPEED += 10
+				max_health += 30
+				current_health += 30
+				max_stamina += 10
+				stamina_regen +=5
+				PLAYER_ATTACK_DAMAGE += 15
+			
+		defeated_bosses.append(boss_id)
+		print("Power Up dari boss: ", boss_id)
+	
+	current_health = min(current_health, max_health)
+	current_stamina = min(current_stamina, max_stamina)
+
+	if hud:
+		hud.update_health(current_health, max_health)
+		hud.update_stamina(current_stamina, max_stamina)
+
+
+# Rope Function
+
+func start_rope_transport(start_pos: Vector2, end_pos: Vector2, speed: float) -> void:
+	is_using_rope = true
+	rope_start_position = start_pos
+	rope_end_position = end_pos
+	rope_speed = speed
+
+	global_position = start_pos
+	velocity = Vector2.ZERO
+	animated_sprite.play("idle")
+
+func handle_rope_movement(delta: float) -> void:
+	var direction := Input.get_axis("ui_left", "ui_right")
+
+	velocity = Vector2.ZERO
+
+	global_position.x += direction * rope_speed * delta
+
+	var min_x := minf(
+		rope_start_position.x,
+		rope_end_position.x
+	)
+	var max_x := maxf(
+		rope_start_position.x,
+		rope_end_position.x
+	)
+
+	global_position.x = clampf(
+		global_position.x,
+		min_x,
+		max_x
+	)
+
+	global_position.y = rope_start_position.y
+
+	if direction != 0:
+		update_facing(direction)
+		animated_sprite.play("roping")
+	else:
+		animated_sprite.play("idle")
+
+	if Input.is_action_just_pressed("interact"):
+		is_using_rope = false
+		velocity = Vector2.ZERO

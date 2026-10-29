@@ -2,8 +2,55 @@ extends Node
 
 var target_gate_destination: String = ""
 var dead_enemies: Dictionary = {}
+var deafeated_bosses: Array[String] = []
+var defeated_final_bosses: Array[String] = []
+
+const REQUIRED_BOSS: Array[String] = [
+	"dark_golem",
+	"golem",
+	"ice_golem",
+]
 
 const MAIN_SCENE_PATH = "res://scenes/main_map.tscn"
+
+func mark_boss_defeated(boss_id: String) -> void:
+	if boss_id == "" or boss_id in deafeated_bosses:
+		return
+	
+	deafeated_bosses.append(boss_id)
+	print("Boss dikalahkan: ", boss_id)
+	print("Progress Boss: ", deafeated_bosses.size(), " / 3")
+	
+func is_boss_defeated(boss_id: String) -> bool:
+	return boss_id in deafeated_bosses
+	
+func all_bosses_defeated() -> bool:
+	for boss_id in REQUIRED_BOSS:
+		if boss_id not in deafeated_bosses:
+			return false
+	
+	return true
+	
+func mark_final_boss_defeated(boss_id: String) -> void:
+	if boss_id == "" or boss_id in defeated_final_bosses:
+		return
+
+	defeated_final_bosses.append(boss_id)
+	print("Final boss dikalahkan: ", boss_id)
+	print(
+		"Progres final boss: ",
+		defeated_final_bosses.size(),
+		" / ",
+		REQUIRED_BOSS.size()
+	)
+
+func all_final_bosses_defeated() -> bool:
+	for boss_id in REQUIRED_BOSS:
+		if boss_id not in defeated_final_bosses:
+			return false
+
+	return true
+
 
 func transition_to_scene(target_path: String, gate_name: String, player_node: Node) -> void:
 	if not is_instance_valid(player_node):
@@ -50,6 +97,8 @@ func transition_to_scene(target_path: String, gate_name: String, player_node: No
 	
 	setup_camera_limits(player_node, current_scene)
 	
+	player_node.boss_power_up()
+	
 	
 func setup_camera_limits(player_node: Node2D, current_scene: Node) -> void:
 	var camera := player_node.get_node_or_null("Camera2D") as Camera2D
@@ -89,6 +138,8 @@ func setup_camera_limits(player_node: Node2D, current_scene: Node) -> void:
 
 func reset_game_state() -> void:
 	dead_enemies.clear()
+	deafeated_bosses.clear()
+	defeated_final_bosses.clear()
 	target_gate_destination = ""
 	
 

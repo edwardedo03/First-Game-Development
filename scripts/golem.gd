@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
-const SPEED = 80.0
-const JUMP_VELOCITY = -280.0
+@export var is_final_boss: bool = false
+@export var boss_id: String = "golem"
+const SPEED = 100.0
+@export var JUMP_VELOCITY = -280.0
 const ATTACK_DAMAGE = 30
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player: CharacterBody2D = null
 
-var health: int = 200
+@export var health: int = 200
 
 var is_attacking: bool = false
 var is_dead: bool = false
@@ -23,10 +25,17 @@ var is_damaged: bool = false
 var attack_collision_offset_x: float
 
 func _ready() -> void:
+	if is_final_boss:
+		return
+	
 	var current_map = get_tree().current_scene.name
+	
 	if GameManager.dead_enemies.has(current_map):
 		if name in GameManager.dead_enemies[current_map]:
 			queue_free()
+			return
+			
+	attack_collision_offset_x = absf(attack_collision.position.x)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -68,7 +77,7 @@ func _physics_process(delta: float) -> void:
 				wall_check.target_position = Vector2(direction * 30, 0)
 
 				ledge_check.position.x = abs(ledge_check.position.x) * direction
-				ledge_check.target_position = Vector2(0, 65)
+				ledge_check.target_position = Vector2(0, 45)
 
 				wall_check.force_raycast_update()
 				ledge_check.force_raycast_update()
@@ -151,6 +160,11 @@ func die() -> void:
 		
 	if not (name in GameManager.dead_enemies[current_map]):
 		GameManager.dead_enemies[current_map].append(name)
+	
+	if is_final_boss:
+		GameManager.mark_final_boss_defeated(boss_id)
+	else:
+		GameManager.mark_boss_defeated(boss_id)
 	
 	is_dead = true
 	velocity = Vector2.ZERO

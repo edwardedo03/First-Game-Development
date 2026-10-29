@@ -12464,6 +12464,7 @@ position = Vector2(1057, 535)
 position = Vector2(192.61, 595)
 scale = Vector2(0.475, 0.475)
 target_scene = "uid://bw01h7lyegmp5"
+requires_no_boss = true
 
 [node name="Sprite2D" type="Sprite2D" parent="TrapGate" unique_id=1060708389]
 texture = ExtResource("26_36g7h")
@@ -12473,6 +12474,7 @@ position = Vector2(902, 336.00003)
 scale = Vector2(0.40500003, 0.40500003)
 target_scene = "uid://drcihx4sev1eu"
 scene_destination = "gate_1"
+requires_no_boss = true
 
 [node name="main-gate1" type="Marker2D" parent="." unique_id=1484493422]
 position = Vector2(903.68, 340.32)
@@ -12482,6 +12484,7 @@ position = Vector2(1014.00006, 401)
 scale = Vector2(0.37, 0.37)
 target_scene = "uid://cb4crkrtm0hbw"
 scene_destination = "gate_2"
+requires_no_boss = true
 
 [node name="main-gate2" type="Marker2D" parent="." unique_id=721129080]
 position = Vector2(1014, 401)
@@ -12489,25 +12492,31 @@ position = Vector2(1014, 401)
 [node name="FinalBossGate" parent="." unique_id=509939495 instance=ExtResource("19_j8ata")]
 position = Vector2(546.00006, 269)
 scale = Vector2(0.35, 0.35)
+target_scene = "uid://c64660lidvwyw"
+scene_destination = "gate_final"
 
 [node name="Sprite2D" type="Sprite2D" parent="FinalBossGate" unique_id=956643554]
 position = Vector2(2.8569584, 17.142866)
 scale = Vector2(1.1857141, 1.1857141)
 texture = ExtResource("24_qvxoj")
 
+[node name="main-gate-final" type="Marker2D" parent="." unique_id=1834165468]
+position = Vector2(546.555, 275)
+scale = Vector2(0.41499993, 0.41499993)
+
 [node name="main_gate" type="Marker2D" parent="." unique_id=1826213004]
 position = Vector2(195, 600)
 scale = Vector2(0.475, 0.475)
 
 [node name="Ladders" type="TileMapLayer" parent="." unique_id=1531413229 groups=["ladder_layer"]]
-tile_map_data = PackedByteArray("AAAfAA0AAQAAAAAAAAAfAA4AAQAAAAEAAAAgAA0AAQABAAAAAAAgAA4AAQABAAEAAAAXABsAAAAAAAAAAAAXABwAAAAAAAEAAAAYABsAAAABAAAAAAAYABwAAAABAAEAAAAXAB0AAQAAAAAAAAAXAB4AAQAAAAEAAAAYAB0AAQABAAAAAAAYAB4AAQABAAEAAAAvAA0AAAAAAAAAAAAvAA4AAAAAAAEAAAAwAA0AAAABAAAAAAAwAA4AAAABAAEAAAAvAA8AAQAAAAAAAAAvABAAAQAAAAEAAAAwAA8AAQABAAAAAAAwABAAAQABAAEAAAA8ABIAAQAAAAAAAAA8ABMAAQAAAAEAAAA9ABIAAQABAAAAAAA9ABMAAQABAAEAAAA8ABQAAQAAAAAAAAA8ABUAAQAAAAEAAAA9ABQAAQABAAAAAAA9ABUAAQABAAEAAAA5AA0AAAAAAAAAAAA5AA4AAAAAAAEAAAA6AA0AAAABAAAAAAA6AA4AAAABAAEAAAA5AA8AAQAAAAAAAAA5ABAAAQAAAAEAAAA6AA8AAQABAAAAAAA6ABAAAQABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAfAA0AAQAAAAAAAAAfAA4AAQAAAAEAAAAgAA0AAQABAAAAAAAgAA4AAQABAAEAAAAXABsAAAAAAAAAAAAXABwAAAAAAAEAAAAYABsAAAABAAAAAAAYABwAAAABAAEAAAAXAB0AAQAAAAAAAAAXAB4AAQAAAAEAAAAYAB0AAQABAAAAAAAYAB4AAQABAAEAAAAvAA0AAAAAAAAAAAAvAA4AAAAAAAEAAAAwAA0AAAABAAAAAAAwAA4AAAABAAEAAAAvAA8AAQAAAAAAAAAvABAAAQAAAAEAAAAwAA8AAQABAAAAAAAwABAAAQABAAEAAAA8ABIAAQAAAAAAAAA8ABMAAQAAAAEAAAA9ABIAAQABAAAAAAA9ABMAAQABAAEAAAA8ABQAAQAAAAAAAAA8ABUAAQAAAAEAAAA9ABQAAQABAAAAAAA9ABUAAQABAAEAAAA5AA0AAAAAAAAAAAA5AA4AAAAAAAEAAAA6AA0AAAABAAAAAAA6AA4AAAABAAEAAAA5AA8AAQAAAAAAAAA5ABAAAQAAAAEAAAA6AA8AAQABAAAAAAA6ABAAAQABAAEAAAAXAB8AAQAAAAAAAAAYAB8AAQABAAAAAAA=")
 tile_set = SubResource("TileSet_0n326")
 
 [node name="NecroVillain" parent="." unique_id=2014762353 instance=ExtResource("21_2wvi4")]
 position = Vector2(591, 499)
 
 [node name="Skeleton" parent="." unique_id=270025622 node_paths=PackedStringArray("hud", "ladder_layer") instance=ExtResource("19_ol44e")]
-position = Vector2(67, 617)
+position = Vector2(68, 617)
 hud = NodePath("HUD")
 ladder_layer = NodePath("../Ladders")
 
@@ -12520,6 +12529,9 @@ limit_right = 1150
 limit_bottom = 689
 
 [node name="HUD" parent="Skeleton" unique_id=1007076508 instance=ExtResource("23_8yhmk")]
+
+[node name="Heal13" parent="." unique_id=921280052 instance=ExtResource("32_on5gu")]
+position = Vector2(204, 381)
 
 [node name="Cloud" type="TileMap" parent="." unique_id=1566498122]
 tile_set = SubResource("TileSet_bcn5p")
@@ -12536,7 +12548,7 @@ position = Vector2(0, -14)
 [node name="BottomRight" type="Marker2D" parent="CameraBounds" unique_id=1656680078]
 position = Vector2(1151, 697)
 
-[node name="Heal" parent="." unique_id=921280052 instance=ExtResource("32_on5gu")]
+[node name="Heal" parent="." unique_id=1722149865 instance=ExtResource("32_on5gu")]
 position = Vector2(672, 422.00003)
 scale = Vector2(0.69, 0.69)
 
@@ -12582,3 +12594,42 @@ patrol_right = 35.0
 position = Vector2(933, 622)
 patrol_left = 100.0
 patrol_right = 100.0
+
+[node name="NecroVillain2" parent="." unique_id=1356281478 instance=ExtResource("21_2wvi4")]
+position = Vector2(955, 615)
+
+[node name="NecroVillain3" parent="." unique_id=2138362972 instance=ExtResource("21_2wvi4")]
+position = Vector2(1030, 342)
+
+[node name="NecroVillain4" parent="." unique_id=1026534678 instance=ExtResource("21_2wvi4")]
+position = Vector2(863, 200)
+
+[node name="NecroVillain5" parent="." unique_id=681110939 instance=ExtResource("21_2wvi4")]
+position = Vector2(997, 159)
+
+[node name="NecroVillain6" parent="." unique_id=1561161460 instance=ExtResource("21_2wvi4")]
+position = Vector2(1040, 55)
+
+[node name="NecroVillain7" parent="." unique_id=168223993 instance=ExtResource("21_2wvi4")]
+position = Vector2(937, 67)
+
+[node name="NecroVillain8" parent="." unique_id=955441973 instance=ExtResource("21_2wvi4")]
+position = Vector2(681, 117)
+
+[node name="NecroVillain9" parent="." unique_id=1371817665 instance=ExtResource("21_2wvi4")]
+position = Vector2(117, 326)
+
+[node name="NecroVillain10" parent="." unique_id=308128705 instance=ExtResource("21_2wvi4")]
+position = Vector2(247, 408)
+
+[node name="Heal9" parent="." unique_id=1662714381 instance=ExtResource("32_on5gu")]
+position = Vector2(1039, 54)
+
+[node name="Heal10" parent="." unique_id=487844073 instance=ExtResource("32_on5gu")]
+position = Vector2(794, 48)
+
+[node name="Heal11" parent="." unique_id=1210478332 instance=ExtResource("32_on5gu")]
+position = Vector2(640, 177)
+
+[node name="Heal12" parent="." unique_id=1503661371 instance=ExtResource("32_on5gu")]
+position = Vector2(76, 319)

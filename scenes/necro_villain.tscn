@@ -378,8 +378,8 @@ position = Vector2(7.5, 1)
 shape = SubResource("RectangleShape2D_1bk8i")
 
 [node name="LedgeCheck" type="RayCast2D" parent="." unique_id=981693818]
-position = Vector2(20, 0)
-target_position = Vector2(0, 65)
+position = Vector2(10, 0)
+target_position = Vector2(0, 45)
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=1247583644]
 position = Vector2(0, 11.6)

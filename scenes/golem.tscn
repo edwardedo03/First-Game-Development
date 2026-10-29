@@ -305,12 +305,12 @@ position = Vector2(10, 1)
 shape = SubResource("RectangleShape2D_ka4ug")
 
 [node name="LedgeCheck" type="RayCast2D" parent="." unique_id=1664374525]
-position = Vector2(20, 0)
-target_position = Vector2(0, 65)
+position = Vector2(10, 0)
+target_position = Vector2(0, 45)
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=1539204635]
 position = Vector2(0, 11.6)
-target_position = Vector2(30, 0)
+target_position = Vector2(40, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

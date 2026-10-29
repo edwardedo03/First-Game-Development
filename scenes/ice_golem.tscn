@@ -338,7 +338,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iutbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3gic"]
-size = Vector2(561, 160)
+size = Vector2(561, 243)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qbfb"]
 size = Vector2(40, 34)
@@ -365,7 +365,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1513564952]
-position = Vector2(-1, 25)
+position = Vector2(-1, -21.5)
 shape = SubResource("RectangleShape2D_o3gic")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1869693536]
@@ -377,8 +377,8 @@ position = Vector2(10, 1)
 shape = SubResource("RectangleShape2D_8qbfb")
 
 [node name="LedgeCheck" type="RayCast2D" parent="." unique_id=1093551798]
-position = Vector2(20, 0)
-target_position = Vector2(0, 65)
+position = Vector2(10, 0)
+target_position = Vector2(0, 45)
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=440616891]
 position = Vector2(0, 11.6)

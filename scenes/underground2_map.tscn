@@ -81,9 +81,11 @@
 [ext_resource type="Texture2D" uid="uid://b7pu6302gvpxu" path="res://assets/tilemap/underground2/PNG/Details/torch3_4.png" id="72_vjp26"]
 [ext_resource type="Texture2D" uid="uid://cs8xgtni072fn" path="res://assets/tilemap/underground2/PNG/Details/trap1.png" id="73_kknfj"]
 [ext_resource type="Texture2D" uid="uid://bdngn8y0coltb" path="res://assets/item/gate/17.png" id="80_dltc2"]
+[ext_resource type="Script" uid="uid://chiwsc2kjjcuv" path="res://scripts/rope_transport.gd" id="80_pno5i"]
 [ext_resource type="Texture2D" uid="uid://dgy7v17i5bj63" path="res://assets/item/gate/57.png" id="82_04c4c"]
 [ext_resource type="PackedScene" uid="uid://3teqhfb8n6rp" path="res://scenes/necro_villain.tscn" id="82_hhblm"]
 [ext_resource type="PackedScene" uid="uid://bqmmko7ltxhfo" path="res://scenes/ice_golem.tscn" id="84_m8hvd"]
+[ext_resource type="PackedScene" uid="uid://g4r881747t1k" path="res://scenes/heal.tscn" id="85_sxgn7"]
 
 [sub_resource type="GDScript" id="GDScript_qi4p0"]
 script/source = "extends Node2D
@@ -164,9 +166,9 @@ texture = ExtResource("51_mcb06")
 0:0/0 = 0
 3:0/0 = 0
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.35971832, -6.2950544, 8, -4.6763268, 8, 6.2950554)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5395756, -8, 8, -8, 8, 6.2950554)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.036044, 8, -4.3166084, 8, 8, -8, 8)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.0791531, -5.935337, 8, -5.3957615, 8, 8, -8, 8)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.036044, 8, -4.3166084, 8, 8, -8, 8)
 3:1/0 = 0
@@ -11259,13 +11261,15 @@ sources/0 = SubResource("TileSetAtlasSource_1ipue")
 sources/1 = SubResource("TileSetAtlasSource_8oysg")
 sources/2 = SubResource("TileSetAtlasSource_a58ug")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s52ci"]
+size = Vector2(834, 20)
+
 [node name="Node2D" type="Node2D" unique_id=1235849326]
 script = SubResource("GDScript_qi4p0")
 
 [node name="Lava" type="TileMapLayer" parent="." unique_id=1458372180 groups=["lava_layer"]]
 tile_map_data = PackedByteArray("AAANACoADQABAAEAAAAOACoADQACAAEAAAD9/yoAAgAAAAEAAAD+/yoAAgABAAEAAAD//yoAAgACAAEAAAAAACoAAgADAAEAAAABACoAAwAAAAEAAAACACoAAwABAAEAAAADACoAAwACAAEAAAD6/yoAAgABAAEAAAD7/yoAAgACAAEAAAD8/yoAAgADAAEAAABMACoAAwABAAEAAABNACoAAwACAAEAAABOACoAAwADAAEAAABPACoAAgAAAAEAAABQACoAAgABAAEAAABRACoAAgACAAEAAABSACoAAgADAAEAAAA3ACoACwABAAEAAAA4ACoACwACAAEAAAA2ACoACwAAAAEAAAA5ACoACwADAAEAAAAwACoADAABAAEAAAAxACoADAACAAEAAAAXACoACwABAAEAAAAYACoACwACAAEAAAAnACoABgAAAAEAAAAoACoABgABAAEAAAApACoABgACAAEAAAAkACoABwABAAEAAAAlACoABwACAAEAAAAmACoABwADAAEAAAA+ACoABwABAAEAAAA/ACoABwACAAEAAABAACoABwADAAEAAABBACoABgAAAAEAAABCACoABgABAAEAAABDACoABgACAAEAAAAeACoADAABAAEAAAAfACoADAACAAEAAAAHACoACwABAAEAAAAIACoACwACAAEAAAAWACoACwAAAAEAAAAZACoACwADAAEAAAAJACoACwADAAEAAAAGACoACwAAAAEAAAA=")
 tile_set = SubResource("TileSet_iutbn")
-collision_visibility_mode = 1
 
 [node name="Background" type="TileMap" parent="." unique_id=1240453853]
 tile_set = SubResource("TileSet_4thqg")
@@ -11296,6 +11300,23 @@ layer_2/tile_data = PackedInt32Array(2949124, 7, 0, 3014660, 7, 1, 3080196, 7, 2
 tile_map_data = PackedByteArray("AAA9ABMAAAAAAAAAAAA9ABQAAAAAAAEAAAA+ABMAAAABAAAAAAA+ABQAAAABAAEAAAA9ABUAAQAAAAAAAAA9ABYAAQAAAAAAAAA+ABUAAQABAAAAAAA+ABYAAQABAAAAAAA9ABcAAQAAAAEAAAA9ABgAAQAAAAEAAAA+ABcAAQABAAEAAAA+ABgAAQABAAEAAAA9ABkAAQAAAAAAAAA9ABoAAQAAAAEAAAA+ABkAAQABAAAAAAA+ABoAAQABAAEAAAACABgAAAAAAAAAAAACABkAAAAAAAEAAAADABgAAAABAAAAAAADABkAAAABAAEAAAACABoAAQAAAAAAAAACABsAAQAAAAEAAAADABoAAQABAAAAAAADABsAAQABAAEAAAACAB0AAQAAAAEAAAACAB4AAQAAAAAAAAADAB0AAQABAAEAAAADAB4AAQABAAAAAAACABwAAQAAAAAAAAADABwAAQABAAAAAAACAB8AAQAAAAEAAAADAB8AAQABAAEAAAACACAAAQAAAAAAAAACACEAAQAAAAEAAAADACAAAQABAAAAAAADACEAAQABAAEAAAACACIAAQAAAAAAAAACACMAAQAAAAEAAAADACIAAQABAAAAAAADACMAAQABAAEAAAAFACgAAQAAAAAAAAAFACkAAQAAAAEAAAAGACgAAQABAAAAAAAGACkAAQABAAEAAAAFACYAAQAAAAAAAAAFACcAAQAAAAEAAAAGACYAAQABAAAAAAAGACcAAQABAAEAAAAFACQAAQAAAAAAAAAFACUAAQAAAAEAAAAGACQAAQABAAAAAAAGACUAAQABAAEAAAADACQAAQAAAAAAAAADACUAAQAAAAEAAAAEACQAAQABAAAAAAAEACUAAQABAAEAAAAEACIAAQAAAAAAAAAEACMAAQAAAAEAAAAFACIAAQABAAAAAAAFACMAAQABAAEAAAADABMAAQAAAAAAAAADABQAAQAAAAEAAAAEABMAAQABAAAAAAAEABQAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_2jl2e")
 
+[node name="RopeTransport" type="Node2D" parent="." unique_id=1225016324]
+position = Vector2(402, 2)
+script = ExtResource("80_pno5i")
+
+[node name="InteractArea" type="Area2D" parent="RopeTransport" unique_id=651855973]
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeTransport/InteractArea" unique_id=1022561118]
+position = Vector2(123, 284)
+shape = SubResource("RectangleShape2D_s52ci")
+
+[node name="RopeStart" type="Marker2D" parent="RopeTransport" unique_id=711801914]
+position = Vector2(-287, 276)
+
+[node name="RopeEnd" type="Marker2D" parent="RopeTransport" unique_id=1474306427]
+position = Vector2(537, 276)
+
 [node name="CameraBounds" type="Node2D" parent="." unique_id=1940991928]
 
 [node name="TopLeft" type="Marker2D" parent="CameraBounds" unique_id=677185293]
@@ -11317,6 +11338,7 @@ position = Vector2(1048, 412)
 scale = Vector2(0.395, 0.395)
 target_scene = "uid://cd2aueowo6tr4"
 scene_destination = "main-gate1"
+required_boss_id = "ice_golem"
 
 [node name="Sprite2D" type="Sprite2D" parent="MainGate" unique_id=1027442733]
 position = Vector2(4.000002, -3.999998)
@@ -11337,3 +11359,9 @@ position = Vector2(884, 412)
 
 [node name="NecroVillain4" parent="." unique_id=1632196609 instance=ExtResource("82_hhblm")]
 position = Vector2(236, 476)
+
+[node name="Heal" parent="." unique_id=921280052 instance=ExtResource("85_sxgn7")]
+position = Vector2(305, 537)
+
+[node name="Heal2" parent="." unique_id=539644773 instance=ExtResource("85_sxgn7")]
+position = Vector2(585, 291)

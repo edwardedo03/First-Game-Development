@@ -84,6 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://bdngn8y0coltb" path="res://assets/item/gate/17.png" id="80_qgqon"]
 [ext_resource type="PackedScene" uid="uid://3teqhfb8n6rp" path="res://scenes/necro_villain.tscn" id="82_pc3oo"]
 [ext_resource type="PackedScene" uid="uid://dqk1qqktqftvb" path="res://scenes/golem.tscn" id="84_lf6y6"]
+[ext_resource type="PackedScene" uid="uid://g4r881747t1k" path="res://scenes/heal.tscn" id="85_hofmp"]
 
 [sub_resource type="GDScript" id="GDScript_qi4p0"]
 script/source = "extends Node2D
@@ -11259,7 +11260,6 @@ script = SubResource("GDScript_qi4p0")
 [node name="Lava" type="TileMapLayer" parent="." unique_id=1458372180 groups=["lava_layer"]]
 tile_map_data = PackedByteArray("AAANACoADQABAAEAAAAOACoADQACAAEAAAD9/yoAAgAAAAEAAAD+/yoAAgABAAEAAAD//yoAAgACAAEAAAAAACoAAgADAAEAAAABACoAAwAAAAEAAAACACoAAwABAAEAAAADACoAAwACAAEAAAD6/yoAAgABAAEAAAD7/yoAAgACAAEAAAD8/yoAAgADAAEAAABMACoAAwABAAEAAABNACoAAwACAAEAAABOACoAAwADAAEAAABPACoAAgAAAAEAAABQACoAAgABAAEAAABRACoAAgACAAEAAABSACoAAgADAAEAAAA3ACoACwABAAEAAAA4ACoACwACAAEAAAA2ACoACwAAAAEAAAA5ACoACwADAAEAAAAwACoADAABAAEAAAAxACoADAACAAEAAAATABYADAABAAEAAAAUABYADAACAAEAAAAmABYADAACAAEAAAAlABYADAABAAEAAAAXACoACwABAAEAAAAYACoACwACAAEAAAAWACoACwAAAAEAAAAZACoACwADAAEAAAA=")
 tile_set = SubResource("TileSet_iutbn")
-collision_visibility_mode = 1
 
 [node name="Background" type="TileMap" parent="." unique_id=1240453853]
 tile_set = SubResource("TileSet_4thqg")
@@ -11303,6 +11303,7 @@ position = Vector2(1217, 277)
 scale = Vector2(0.345, 0.345)
 target_scene = "uid://cd2aueowo6tr4"
 scene_destination = "main_gate"
+required_boss_id = "golem"
 
 [node name="Sprite2D" type="Sprite2D" parent="MainGate" unique_id=876745139]
 texture = ExtResource("63_ogncj")
@@ -11329,3 +11330,12 @@ position = Vector2(214, 479)
 
 [node name="NecroVillain4" parent="." unique_id=499288668 instance=ExtResource("82_pc3oo")]
 position = Vector2(945, 653)
+
+[node name="Heal" parent="." unique_id=921280052 instance=ExtResource("85_hofmp")]
+position = Vector2(20, 426)
+
+[node name="Heal2" parent="." unique_id=786655398 instance=ExtResource("85_hofmp")]
+position = Vector2(176, 614)
+
+[node name="Heal3" parent="." unique_id=31685867 instance=ExtResource("85_hofmp")]
+position = Vector2(1014, 410)

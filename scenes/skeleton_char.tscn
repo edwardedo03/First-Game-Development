@@ -130,6 +130,9 @@
 [ext_resource type="Texture2D" uid="uid://6eqhymxf8l2s" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Kicking/0_Skeleton_Crusader_Kicking_009.png" id="62_ogdqp"]
 [ext_resource type="Texture2D" uid="uid://bij031k6k0s22" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Kicking/0_Skeleton_Crusader_Kicking_010.png" id="63_aayle"]
 [ext_resource type="Texture2D" uid="uid://cgwo7jwtty6xl" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Kicking/0_Skeleton_Crusader_Kicking_011.png" id="64_foc02"]
+[ext_resource type="Texture2D" uid="uid://hxtu2flnev78" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Throwing in The Air/0_Skeleton_Crusader_Throwing in The Air_000.png" id="65_ogdqp"]
+[ext_resource type="Texture2D" uid="uid://cm5o78ssjvys4" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Throwing in The Air/0_Skeleton_Crusader_Throwing in The Air_001.png" id="66_aayle"]
+[ext_resource type="Texture2D" uid="uid://cyaltea7o7vey" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Throwing in The Air/0_Skeleton_Crusader_Throwing in The Air_002.png" id="67_foc02"]
 [ext_resource type="Texture2D" uid="uid://c2cd4v0a0vr46" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Throwing/0_Skeleton_Crusader_Throwing_000.png" id="89_f2f6w"]
 [ext_resource type="Texture2D" uid="uid://dpnyffwr4u4f6" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Throwing/0_Skeleton_Crusader_Throwing_001.png" id="90_e8b6q"]
 [ext_resource type="Texture2D" uid="uid://cfkxywepnlx7q" path="res://assets/sprites/skeleton/Skeleton_Crusader_3/PNG/PNG Sequences/Throwing/0_Skeleton_Crusader_Throwing_002.png" id="91_luriq"]
@@ -358,6 +361,20 @@ animations = [{
 "loop": 0,
 "name": &"kick",
 "speed": 17.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("65_ogdqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_aayle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_foc02")
+}],
+"loop": 2,
+"name": &"roping",
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -641,8 +658,9 @@ script = ExtResource("1_ola05")
 position = Vector2(-2.3841858e-07, 2.3841858e-07)
 scale = Vector2(0.055451393, 0.056777593)
 sprite_frames = SubResource("SpriteFrames_iutbn")
-animation = &"damaged"
+animation = &"roping"
 autoplay = "idle"
+frame_progress = 0.18905552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1054783544]
 position = Vector2(-1, 2)
