@@ -159,6 +159,7 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "A / D : Move
 ← / → : Move
+Shift : Sprint
 ↑ / ↓ : Move on Ladder
 Space : Jump
 R : Open Hint
