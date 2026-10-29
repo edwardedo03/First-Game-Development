@@ -12529,6 +12529,7 @@ limit_right = 1150
 limit_bottom = 689
 
 [node name="HUD" parent="Skeleton" unique_id=1007076508 instance=ExtResource("23_8yhmk")]
+process_mode = 3
 
 [node name="Heal13" parent="." unique_id=921280052 instance=ExtResource("32_on5gu")]
 position = Vector2(204, 381)

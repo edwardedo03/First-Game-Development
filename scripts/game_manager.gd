@@ -13,6 +13,21 @@ const REQUIRED_BOSS: Array[String] = [
 
 const MAIN_SCENE_PATH = "res://scenes/main_map.tscn"
 
+const END_SCREEN_SCENE = preload("res://scenes/end_screen.tscn")
+var end_screen: CanvasLayer
+
+func _ready() -> void:
+	end_screen = END_SCREEN_SCENE.instantiate()
+	get_tree().root.add_child.call_deferred(end_screen)
+
+func show_victory_screen() -> void:
+	if end_screen and is_instance_valid(end_screen):
+		end_screen.show_victory()
+
+func show_game_over_screen() -> void:
+	if end_screen and is_instance_valid(end_screen):
+		end_screen.show_game_over()
+
 func mark_boss_defeated(boss_id: String) -> void:
 	if boss_id == "" or boss_id in deafeated_bosses:
 		return

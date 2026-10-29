@@ -11409,14 +11409,20 @@ position = Vector2(34, 661)
 [node name="IceGolem" parent="." unique_id=736142975 instance=ExtResource("88_dj236")]
 position = Vector2(1138, 622)
 is_final_boss = true
+ATTACK_DAMAGE = 60
+health = 700
 
 [node name="Golem" parent="." unique_id=1220819652 instance=ExtResource("89_qqjag")]
 position = Vector2(999, 543)
 is_final_boss = true
+ATTACK_DAMAGE = 70
+health = 700
 
 [node name="DarkGolem" parent="." unique_id=1590353977 instance=ExtResource("90_1k7an")]
 position = Vector2(1260, 590)
 is_final_boss = true
+ATTACK_DAMAGE = 65
+health = 700
 
 [node name="Heal" parent="." unique_id=921280052 instance=ExtResource("91_1k7an")]
 position = Vector2(998, 650)

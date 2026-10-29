@@ -9,8 +9,19 @@ func _ready() -> void:
 		pause_menu.hide()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		toggle_pause()
+	#if event.is_action_pressed("ui_cancel"):
+		#toggle_pause()
+
+	if not event.is_action_pressed("ui_cancel") or event.is_echo():
+		return
+
+	if GameManager.end_screen \
+	and is_instance_valid(GameManager.end_screen) \
+	and GameManager.end_screen.is_showing_end_screen:
+		return
+
+	toggle_pause()
+	get_viewport().set_input_as_handled()
 
 func toggle_pause() -> void:
 	var is_paused = not get_tree().paused
@@ -58,3 +69,4 @@ func _on_quit_pressed() -> void:
 
 func _on_pause_button_pressed() -> void:
 	toggle_pause()
+	

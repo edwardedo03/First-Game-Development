@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var boss_id: String = "golem"
 const SPEED = 100.0
 @export var JUMP_VELOCITY = -280.0
-const ATTACK_DAMAGE = 30
+@export var ATTACK_DAMAGE = 30
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player: CharacterBody2D = null
@@ -163,6 +163,8 @@ func die() -> void:
 	
 	if is_final_boss:
 		GameManager.mark_final_boss_defeated(boss_id)
+		if GameManager.all_final_bosses_defeated():
+			GameManager.show_victory_screen()
 	else:
 		GameManager.mark_boss_defeated(boss_id)
 	

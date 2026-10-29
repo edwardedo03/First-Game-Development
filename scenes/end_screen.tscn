@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dl0kn1rbefcvi"]
+
+[ext_resource type="Texture2D" uid="uid://w2b0lugi2ja3" path="res://assets/hud/menu/Demo Pack/Button_Rectangle Button UnHighlighted.png" id="1_6e1uj"]
+[ext_resource type="Script" uid="uid://dbw3075r0pj82" path="res://scripts/end_screen.gd" id="1_jc7ji"]
+[ext_resource type="Texture2D" uid="uid://xjh1wvrh5c24" path="res://assets/hud/menu/Demo Pack/Button_Rectangle Button Highlighted.png" id="2_jc7ji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj8vg"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+bg_color = Color(0.32156864, 0.30980393, 0.4509804, 1)
+border_width_left = 4
+border_width_top = 8
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(0.24313726, 0.15294118, 0.1882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pddrx"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_6e1uj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kq7ac"]
+texture = ExtResource("2_jc7ji")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6e1uj"]
+texture = ExtResource("2_jc7ji")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jc7ji"]
+content_margin_left = 20.0
+content_margin_top = 5.0
+content_margin_right = 20.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_6e1uj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87vmq"]
+texture = ExtResource("2_jc7ji")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g44xs"]
+texture = ExtResource("2_jc7ji")
+
+[node name="EndScreen" type="CanvasLayer" unique_id=1545614880]
+process_mode = 3
+script = ExtResource("1_jc7ji")
+
+[node name="Overlay" type="Control" parent="." unique_id=1944315797]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Victory" type="PanelContainer" parent="Overlay" unique_id=1371817358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -105.0
+offset_right = 198.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vj8vg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/Victory" unique_id=1398507780]
+layout_mode = 2
+theme_override_constants/separation = 20
+accessibility_region = true
+alignment = 1
+
+[node name="VictoryLabel" type="Label" parent="Overlay/Victory/VBoxContainer" unique_id=1563806806]
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Overlay/Victory/VBoxContainer" unique_id=1869796963]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_pddrx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kq7ac")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6e1uj")
+text = "PLAY AGAIN"
+
+[node name="QuitButton" type="Button" parent="Overlay/Victory/VBoxContainer" unique_id=587562590]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_jc7ji")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_87vmq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g44xs")
+text = "QUIT"
+
+[node name="GameOver" type="PanelContainer" parent="Overlay" unique_id=65001618]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -105.0
+offset_right = 198.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vj8vg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/GameOver" unique_id=1976490275]
+layout_mode = 2
+theme_override_constants/separation = 20
+accessibility_region = true
+alignment = 1
+
+[node name="VictoryLabel" type="Label" parent="Overlay/GameOver/VBoxContainer" unique_id=1506898863]
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "YOU LOSE"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Overlay/GameOver/VBoxContainer" unique_id=260173383]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_pddrx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kq7ac")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6e1uj")
+text = "PLAY AGAIN"
+
+[node name="QuitButton" type="Button" parent="Overlay/GameOver/VBoxContainer" unique_id=986122968]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_jc7ji")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_87vmq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g44xs")
+text = "QUIT"

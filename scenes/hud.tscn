@@ -9,6 +9,37 @@
 [ext_resource type="Texture2D" uid="uid://bgpgxpljltrry" path="res://assets/hud/health/Health&Stamina/Red/BorderBG.png" id="5_0i1j5"]
 [ext_resource type="Texture2D" uid="uid://dsnarxmcxa5tn" path="res://assets/hud/menu/Demo Pack/Button_Square Button UnHighlighted.png" id="6_hd3ao"]
 [ext_resource type="Texture2D" uid="uid://468wssd0xg0m" path="res://assets/hud/menu/Demo Pack/Button_Square Button Highlighted.png" id="7_0i1j5"]
+[ext_resource type="Script" uid="uid://dsgs4p1su88o2" path="res://scripts/hint_panel.gd" id="10_mphia"]
+[ext_resource type="Script" uid="uid://c34v2p7rdr18s" path="res://scripts/task_panel.gd" id="11_0m4u7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpprf"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.32156864, 0.30980393, 0.4509804, 1)
+border_width_left = 4
+border_width_top = 7
+border_width_right = 4
+border_width_bottom = 7
+border_color = Color(0.24313726, 0.15294118, 0.1882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 6
+shadow_offset = Vector2(0, 3.89)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eld54"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_047uy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3swnk"]
+texture = ExtResource("3_5pdws")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkknv"]
+texture = ExtResource("3_5pdws")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uo2fv"]
 texture = ExtResource("2_047uy")
@@ -59,6 +90,137 @@ region = Rect2(96.02599, 230.94936, 48.36309, 6.276123)
 
 [node name="HUD" type="CanvasLayer" unique_id=1007076508]
 script = ExtResource("1_6fi6k")
+
+[node name="HintButton" type="TextureButton" parent="." unique_id=109374972]
+process_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -55.0
+offset_top = 67.155
+offset_right = 701.0176
+offset_bottom = 823.155
+grow_horizontal = 0
+scale = Vector2(0.055, 0.055)
+texture_normal = ExtResource("6_hd3ao")
+texture_pressed = ExtResource("7_0i1j5")
+texture_hover = ExtResource("7_0i1j5")
+
+[node name="Label" type="Label" parent="HintButton" unique_id=1129678871]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 438
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HintPanel" type="PanelContainer" parent="." unique_id=556368413]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.95496
+offset_top = -478.065
+offset_right = -65.30493
+offset_bottom = -199.065
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qpprf")
+script = ExtResource("10_mphia")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HintPanel" unique_id=3305110]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="HintPanel/VBoxContainer" unique_id=2074779814]
+layout_mode = 2
+text = "HINT"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="HintPanel/VBoxContainer" unique_id=1496444311]
+layout_mode = 2
+text = "A / D : Move
+← / → : Move
+↑ / ↓ : Move on Ladder
+Space : Jump
+R : Open Hint
+T : Open Task
+E : Interact"
+
+[node name="CloseButton" type="Button" parent="HintPanel/VBoxContainer" unique_id=2025931250]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_eld54")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3swnk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qkknv")
+text = "Close"
+
+[node name="TaskButton" type="TextureButton" parent="." unique_id=1569162718]
+process_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -55.0
+offset_top = 121.38
+offset_right = 701.0
+offset_bottom = 877.38025
+grow_horizontal = 0
+scale = Vector2(0.055, 0.055)
+texture_normal = ExtResource("6_hd3ao")
+texture_pressed = ExtResource("7_0i1j5")
+texture_hover = ExtResource("7_0i1j5")
+
+[node name="Label" type="Label" parent="TaskButton" unique_id=191972659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 438
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TaskPanel" type="PanelContainer" parent="." unique_id=416725367]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.95496
+offset_top = -428.31
+offset_right = -65.30493
+offset_bottom = -279.31
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qpprf")
+script = ExtResource("11_0m4u7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskPanel" unique_id=2113075069]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="TaskPanel/VBoxContainer" unique_id=661309667]
+layout_mode = 2
+text = "TASK"
+horizontal_alignment = 1
+
+[node name="TaskLabel" type="Label" parent="TaskPanel/VBoxContainer" unique_id=2001839300]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="TaskPanel/VBoxContainer" unique_id=1504479524]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_eld54")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3swnk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qkknv")
+text = "Close"
 
 [node name="Menu" type="Control" parent="." unique_id=601171019]
 process_mode = 2
@@ -175,6 +337,8 @@ nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_iutbn")
 texture_progress = SubResource("AtlasTexture_bcn5p")
 
+[connection signal="pressed" from="HintButton" to="HintPanel" method="_on_hint_button_pressed"]
+[connection signal="pressed" from="TaskButton" to="TaskPanel" method="_on_task_button_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
