@@ -161,6 +161,7 @@ text = "A / D : Move
 ← / → : Move
 Shift : Sprint
 ↑ / ↓ : Move on Ladder
+W / S : Move on Ladder
 Space : Jump
 C : Attack
 R : Open Hint
