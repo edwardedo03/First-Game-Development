@@ -12470,6 +12470,13 @@ position = Vector2(91, 738)
 [node name="Double Jump" parent="." unique_id=829504432 instance=ExtResource("22_cly8o")]
 position = Vector2(1057, 535)
 
+[node name="PointLight2D" type="PointLight2D" parent="Double Jump" unique_id=2097253381]
+position = Vector2(4.506111e-05, 1.9999938)
+color = Color(0.83, 0.6717467, 0.0996, 0.8627451)
+energy = 1.36
+texture = SubResource("GradientTexture2D_iutbn")
+texture_scale = 0.65
+
 [node name="TrapGate" parent="." unique_id=735985940 instance=ExtResource("19_j8ata")]
 position = Vector2(192.61, 595)
 scale = Vector2(0.475, 0.475)
